@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import Loading from './Loading';
+import Loading from './Components/Loading';
 import Song from './Components/Song';
 
 const ShowSongs = () => {
@@ -19,7 +19,7 @@ const ShowSongs = () => {
       })
       .catch(error => {
         setIsLoading(false);
-        navigate('/error');
+        // navigate('/error');
       });
   }, []);
 
