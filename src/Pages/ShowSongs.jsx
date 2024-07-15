@@ -19,7 +19,7 @@ const ShowSongs = () => {
       })
       .catch(error => {
         setIsLoading(false);
-        navigate('/error');
+        navigate('/songs/error');
       });
   }, []);
 

@@ -12,7 +12,7 @@ const Song = ({song}) => {
   useEffect(() => {
     axios
       .patch(`${BASE_URL}/songs/${song.id}`, isFavorite)
-      .catch(() => navigate('/error'));
+      .catch(() => navigate('/songs/error'));
   }, [isFavorite]);
 
   return (
