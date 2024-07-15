@@ -15,8 +15,8 @@ const App = () => {
         <Route path="new" element={<NewSong />} />
         <Route path=":id" element={<ShowSong />} />
         <Route path=":id/edit" element={<EditSong />} />
+        <Route path="error" element={<NotFound />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
