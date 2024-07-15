@@ -3,11 +3,14 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {MdFavorite} from 'react-icons/md';
 import {MdFavoriteBorder} from 'react-icons/md';
+import { MdOutlineDeleteSweep } from "react-icons/md";
+import DeleteSong from './DeleteSong';
 
 const Song = ({song}) => {
   const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState({is_favorite: song.is_favorite});
+  const [deleteWindow, setDeleteWindow] = useState(false);
 
   useEffect(() => {
     axios
@@ -37,6 +40,21 @@ const Song = ({song}) => {
               setIsFavorite(prev => ({...prev, is_favorite: true}));
             }}
             style={{cursor: 'pointer'}}
+          />
+        )}
+      </td>
+      <td>
+        <MdOutlineDeleteSweep
+          onClick={e => {
+            e.stopPropagation();
+            setDeleteWindow(true);
+          }}
+          style={{cursor: 'pointer'}}
+        />
+        {deleteWindow && (
+          <DeleteSong
+            id={song.id}
+            setDeleteWindow={setDeleteWindow}
           />
         )}
       </td>

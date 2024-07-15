@@ -36,7 +36,8 @@ const ShowSongs = () => {
               <th>Artist</th>
               <th>Album</th>
               <th>Time</th>
-              <th>Favorite?:</th>
+              <th>Favorite?</th>
+              <th>Delete?</th>
             </tr>
           </thead>
           <tbody>
