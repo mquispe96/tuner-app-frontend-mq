@@ -19,7 +19,7 @@ const Song = ({song}) => {
   }, [isFavorite]);
 
   return (
-    <tr onClick={() => navigate(`/${song.id}`)}>
+    <tr onClick={() => navigate(`/songs/${song.id}`)}>
       <td>{song.name}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>

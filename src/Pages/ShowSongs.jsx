@@ -24,12 +24,12 @@ const ShowSongs = () => {
   }, []);
 
   return (
-    <main className='songs'>
+    <main className="songs">
       <h2>Songs</h2>
       {isLoading ? (
         <Loading />
       ) : (
-        <table className='songs__table'>
+        <table className="songs__table">
           <thead>
             <tr>
               <th>Title</th>
@@ -48,7 +48,7 @@ const ShowSongs = () => {
         </table>
       )}
     </main>
-  )
+  );
 };
 
 export default ShowSongs;

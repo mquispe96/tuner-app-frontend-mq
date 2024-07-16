@@ -15,7 +15,7 @@ const NewSong = () => {
     is_favorite: false,
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -31,7 +31,7 @@ const NewSong = () => {
   };
 
   return (
-    <section className="new_song">
+    <section className="new-song">
       <h1>New Song</h1>
       {isLoading ? (
         <Loading />
