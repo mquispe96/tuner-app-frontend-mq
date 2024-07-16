@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <>
       <header className="nav">
-        <h1 onClick={() => navigate('/songs')}>My App</h1>
+        <h1 onClick={() => navigate('/songs')}>My Tuner App</h1>
         <button onClick={() => navigate('/songs/new')}>New Song</button>
       </header>
       <Outlet />

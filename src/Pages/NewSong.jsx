@@ -31,7 +31,7 @@ const NewSong = () => {
   };
 
   return (
-    <section className="container">
+    <section className="new_song">
       <h1>New Song</h1>
       {isLoading ? (
         <Loading />
