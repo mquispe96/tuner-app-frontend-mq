@@ -1,3 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+html input, body input {
+  cursor: text;
+}
+html button, body button {
+  cursor: pointer;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  grid-template-areas: "nav" "main";
+}
+
+.nav {
+  grid-area: "nav";
+  background: rgb(2, 36, 61);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+.nav h1 {
+  cursor: pointer;
+}
+.nav button {
+  background: transparent;
+  border: 0.2rem solid white;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+}
+.nav button:hover {
+  box-shadow: 0 0 0.5rem 0.1rem white;
+}
+.nav button:active {
+  box-shadow: none;
+}
+
+.songs {
+  grid-area: "main";
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.songs__table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1.3rem;
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+  overflow: hidden;
+}
+.songs__table td, .songs__table th {
+  padding: 1rem;
+}
+.songs__table thead {
+  background: rgb(2, 36, 61);
+  color: white;
+}
+.songs__table tbody {
+  text-align: center;
+}
+.songs__table tbody td {
+  cursor: pointer;
+}
+.songs__table tbody tr {
+  border-bottom: 0.1rem solid lightgrey;
+}
+.songs__table tbody tr:hover {
+  background: lightgrey;
+}
+.songs__table tbody tr:active {
+  background: grey;
+}
+.songs .delete-opts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.songs .delete-opts__btns {
+  display: flex;
+  justify-content: space-around;
+}
+.songs .delete-opts__btns button {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 1.2rem;
+  border: 0.1rem solid red;
+  color: red;
+}
+.songs .delete-opts__btns button:hover {
+  background: red;
+  color: white;
+  box-shadow: 0 0 0.5rem 0.1rem red;
+}
+.songs .delete-opts__btns button:active {
+  box-shadow: none;
+}
+
+.song {
+  position: relative;
+  grid-area: "main";
+  padding: 2rem;
+}
+.song__details {
+  border: 0.1rem solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem;
+  border-radius: 1.3rem;
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+}
+.song__details .favorite {
+  display: flex;
+  align-items: center;
+}
+.song__btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2rem;
+}
+.song__btns button {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid lightgrey;
+}
+.song__btns button:hover {
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+}
+.song__btns button:active {
+  box-shadow: none;
+}
+
+.delete-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background: white;
+  width: 30%;
+  height: 30%;
+  border-radius: 1.3rem;
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.delete-window__btns {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.delete-window__btns button {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid red;
+  color: red;
+  transition: all 0.3s;
+}
+.delete-window__btns button:hover {
+  background: red;
+  color: white;
+  box-shadow: 0 0 0.5rem 0.1rem red;
+}
+.delete-window__btns button:active {
+  box-shadow: none;
+}
+
+.new-song, .edit-song {
+  grid-area: "main";
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.new-song .form, .edit-song .form {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(7, auto);
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+.new-song .form__group, .new-song .form__favorite, .new-song .form__btns, .new-song .form__errors, .edit-song .form__group, .edit-song .form__favorite, .edit-song .form__btns, .edit-song .form__errors {
+  grid-column: 2/span 1;
+}
+.new-song .form__group, .edit-song .form__group {
+  display: flex;
+  flex-direction: column;
+}
+.new-song .form__group label, .edit-song .form__group label {
+  margin-bottom: 0.5rem;
+}
+.new-song .form__group input, .edit-song .form__group input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid lightgrey;
+}
+.new-song .form__group input:focus, .edit-song .form__group input:focus {
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+}
+.new-song .form__favorite, .edit-song .form__favorite {
+  display: flex;
+  align-items: center;
+}
+.new-song .form__favorite label, .edit-song .form__favorite label {
+  margin-right: 0.5rem;
+}
+.new-song .form__btns, .edit-song .form__btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+.new-song .form__btns button, .edit-song .form__btns button {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid lightgrey;
+}
+.new-song .form__btns button:hover, .edit-song .form__btns button:hover {
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+}
+.new-song .form__btns button:active, .edit-song .form__btns button:active {
+  box-shadow: none;
+}
+
+.not-found {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.not-found button {
+  margin-top: 2rem;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid lightgrey;
+}
+.not-found button:hover {
+  box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+}
+.not-found button:active {
+  box-shadow: none;
+}
 
 /*# sourceMappingURL=index.css.map */

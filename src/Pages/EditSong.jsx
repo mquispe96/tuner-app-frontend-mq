@@ -29,8 +29,8 @@ const EditSong = () => {
         setIsLoading(false);
       })
       .catch(err => {
-        setError(err.toString());
         setIsLoading(false);
+        navigate('/404');
       });
   }, []);
 

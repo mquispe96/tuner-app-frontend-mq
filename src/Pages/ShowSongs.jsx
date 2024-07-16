@@ -19,7 +19,7 @@ const ShowSongs = () => {
       })
       .catch(error => {
         setIsLoading(false);
-        navigate('/songs/error');
+        navigate('/404');
       });
   }, []);
 
@@ -34,8 +34,6 @@ const ShowSongs = () => {
             <tr>
               <th>Title</th>
               <th>Artist</th>
-              <th>Album</th>
-              <th>Time</th>
               <th>Favorite?</th>
               <th>Delete?</th>
             </tr>

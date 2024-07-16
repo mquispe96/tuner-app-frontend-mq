@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom';
-import fzf from '../../public/404.webp';
+import fzf from '/404.webp';
 
 const NotFound = () => {
   const navigate = useNavigate();

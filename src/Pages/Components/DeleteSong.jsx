@@ -6,21 +6,31 @@ const DeleteSong = ({id, setDeleteWindow}) => {
   const navigate = useNavigate();
 
   return (
-    <section className="delete-window">
-      <p>Are you sure you want to delete this song?</p>
-      <button
-        onClick={() => {
-          axios
-            .delete(`${BASE_URL}/songs/${id}`)
-            .then(() => {
-              navigate('/songs');
-            })
-            .catch(() => navigate('/songs/error'));
-        }}
-      >
-        Yes
-      </button>
-      <button onClick={() => setDeleteWindow(false)}>No</button>
+    <section className="delete-opts">
+      <p>Are you sure?</p>
+      <div className="delete-opts__btns">
+        <button
+          onClick={e => {
+            e.stopPropagation();
+            axios
+              .delete(`${BASE_URL}/songs/${id}`)
+              .then(() => {
+                navigate('/songs');
+              })
+              .catch(() => navigate('/songs/error'));
+          }}
+        >
+          Yes
+        </button>
+        <button
+          onClick={e => {
+            e.stopPropagation();
+            setDeleteWindow(false);
+          }}
+        >
+          No
+        </button>
+      </div>
     </section>
   );
 };

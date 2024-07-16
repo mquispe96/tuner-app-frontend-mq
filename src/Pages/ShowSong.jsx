@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import Loading from './Components/Loading';
-import DeleteSong from './Components/DeleteSong';
+import DeleteWindow from './Components/DeleteWindow';
 import {MdFavorite} from 'react-icons/md';
 import {MdFavoriteBorder} from 'react-icons/md';
 
@@ -25,14 +25,13 @@ const ShowSong = () => {
       })
       .catch(err => {
         setIsLoading(false);
-        navigate('/songs/error');
+        navigate('/404');
       });
   }, []);
 
   useEffect(() => {
     axios
       .patch(`${BASE_URL}/songs/${id}`, isFavorite)
-      .catch(() => navigate('/songs/error'));
   }, [isFavorite]);
 
   return (
@@ -41,21 +40,27 @@ const ShowSong = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className="song__details">
-          <h2>{song.name}</h2>
-          <p>{song.artist}</p>
-          <p>{song.album}</p>
-          <p>{song.time}</p>
-          <p
-            onClick={() =>
-              setIsFavorite(prev => ({...prev, is_favorite: !prev.is_favorite}))
-            }
-          >
-            {isFavorite.is_favorite ? <MdFavorite /> : <MdFavoriteBorder />}{' '}
-            Favorite
-          </p>
+        <>
+          <section className="song__details">
+            <h2>Title - {song.name}</h2>
+            <p>Artist/s - {song.artist}</p>
+            <p>Abum - {song.album}</p>
+            <p>Duration - {song.time}</p>
+            <p
+              className="favorite"
+              onClick={() =>
+                setIsFavorite(prev => ({
+                  ...prev,
+                  is_favorite: !prev.is_favorite,
+                }))
+              }
+            >
+              {isFavorite.is_favorite ? <MdFavorite /> : <MdFavoriteBorder />}{' '}
+              Favorite
+            </p>
+          </section>
           {!deleteWindow && (
-            <div className="song__buttons">
+            <div className="song__btns">
               <button onClick={() => navigate('/songs')}>Back</button>
               <button onClick={() => navigate(`/songs/edit/${id}`)}>
                 Edit
@@ -64,9 +69,9 @@ const ShowSong = () => {
             </div>
           )}
           {deleteWindow && (
-            <DeleteSong id={id} setDeleteWindow={setDeleteWindow} />
+            <DeleteWindow id={id} setDeleteWindow={setDeleteWindow} />
           )}
-        </section>
+        </>
       )}
     </main>
   );
